@@ -23,8 +23,10 @@ services:
     image: postgres
     restart: always
     # Uncomment the next two lines to connect to your your database from outside the Docker environment, e.g. using a database GUI like Postico
-    # ports:
-    # - "5432:5432"
+    # Note: db can be accessed using `docker exec` from within the Docker environment.
+    ports:
+      # "<local port you want to access it on>:<port its running inside the container>"
+      - "3001:5432"
     environment:
       POSTGRES_USER: prisma
       POSTGRES_PASSWORD: prisma

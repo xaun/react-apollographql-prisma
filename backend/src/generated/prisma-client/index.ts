@@ -941,6 +941,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/public-mireservant-73/backend/dev`
+  endpoint: `http://localhost:4466`
 });
 export const prisma = new Prisma();
