@@ -7,12 +7,12 @@ const Header = () => {
     const { pathname } = router
     return (
       <div>
-        <Link prefetch href="/">
+        <Link href="/">
           <a className={pathname === '/' ? 'is-active' : ''}>
             <p>Home</p>
           </a>
         </Link>
-        <Link prefetch href="/about">
+        <Link href="/about">
           <a className={pathname === '/about' ? 'is-active' : ''}>
             <p>About</p>
           </a>
