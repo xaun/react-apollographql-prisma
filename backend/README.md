@@ -4,8 +4,9 @@ A Prisma backend that uses a local PosgreSQL db to interact with a Prisma server
 
 ## Commands
 
-* `yarn start` starts GraphQL server on `http://localhost:4000`
+* `yarn start` runs `docker-compose up` and starts GraphQL server on `http://localhost:4000`
 * `yarn prisma <subcommand>` gives access to local version of Prisma CLI (e.g. `yarn prisma deploy`)
+* `psql -h localhost -p 3001 -U prisma` Connect to the postgres server with postgresql cli.
 
 ## Project structure
 
