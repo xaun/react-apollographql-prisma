@@ -12,6 +12,22 @@ export const post = {
     })
   },
 
+  async createComment(parent, { postId, content }, ctx: Context, info) {
+    const userId = getUserId(ctx)
+    const postExists = await ctx.prisma.$exists.post({
+      id: postId
+    })
+    if (!postExists) {
+      throw new Error('Post not found')
+    }
+    return ctx.prisma.createComment({
+      content,
+      post: {
+        connect: { id: postId }
+      }
+    })
+  },
+
   async publish(parent, { id }, ctx: Context, info) {
     const userId = getUserId(ctx)
     const postExists = await ctx.prisma.$exists.post({
