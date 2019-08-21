@@ -1,6 +1,6 @@
 import App from '../components/App'
 import Header from '../components/Header'
-import Box from '../components/atoms/Box'
+import { Box } from '../components/atoms/Box'
 
 export default () => (
   <App>

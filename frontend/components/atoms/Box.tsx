@@ -10,10 +10,8 @@ import {
 
 type BoxProps = SpaceProps & LayoutProps & ColorProps
 
-const Box = styled.div<BoxProps>`
+export const Box = styled.div<BoxProps>`
   ${space}
   ${layout}
   ${color}
 `
-
-export default Box
