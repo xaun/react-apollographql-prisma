@@ -2,11 +2,39 @@
 
 A Prisma backend that uses a local PosgreSQL db to interact with a Prisma server.
 
+## Development
+
+You'll need `yarn`, `docker-compose` and `prisma` globally installed to run the backend.
+
+1. Start the Prisma server & postgres db
+
+  ```bash
+  docker-compose up
+  ```
+
+  If you want to run this process in the background (instead of having 2 tabs open):
+
+  ```bash
+  docker-compose up -d
+  ```
+
+2. Once the Docker containers have finished booting, start the node server
+
+  ```bash
+  yarn start
+  ```
+
 ## Commands
 
 * `yarn start` runs `docker-compose up` and starts GraphQL server on `http://localhost:4000`
 * `yarn prisma <subcommand>` gives access to local version of Prisma CLI (e.g. `yarn prisma deploy`)
 * `psql -h localhost -p 3001 -U prisma` Connect to the postgres server with postgresql cli.
+
+## Troubleshooting
+
+### Issues running `docker-compose up`
+
+Try running `docker-compose down` (or `docker-compose kill`), then when that's finished, `docker-compose up`.
 
 ## Project structure
 
