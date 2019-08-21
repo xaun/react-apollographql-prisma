@@ -1,6 +1,4 @@
 import Page from '../components/Page'
-import { Signup } from '../components/Signup'
-import { Feed } from '../components/Feed'
 import { Box } from '../components/atoms/Box'
 
 export default () => (
@@ -13,8 +11,7 @@ export default () => (
         1 / 4 // 25% from the next breakpoint and up
       ]}
     >
-      <Signup />
-      <Feed />
+      React App
     </Box>
   </Page>
 )
