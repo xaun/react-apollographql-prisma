@@ -1,25 +1,39 @@
 import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost'
 import fetch from 'isomorphic-unfetch'
+import { onError } from 'apollo-link-error'
+import { ApolloLink } from 'apollo-link'
 
 let apolloClient = null
 
-function create (initialState) {
-  // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
+function create(initialState) {
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path }) =>
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        )
+      )
+    }
+
+    if (networkError) console.log(`[Network error]: ${networkError}`)
+  })
+
   const isBrowser = typeof window !== 'undefined'
+
   return new ApolloClient({
-    connectToDevTools: isBrowser,
-    ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
-    link: new HttpLink({
-      uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-      // Use fetch() polyfill on the server
-      fetch: !isBrowser && fetch
-    }),
+    link: ApolloLink.from([
+      errorLink,
+      new HttpLink({
+        uri: 'http://localhost:4000',
+        credentials: 'same-origin',
+        fetch: !isBrowser && fetch
+      })
+    ]),
     cache: new InMemoryCache().restore(initialState || {})
   })
 }
 
-export default function initApollo (initialState) {
+export default function initApollo(initialState) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === 'undefined') {
