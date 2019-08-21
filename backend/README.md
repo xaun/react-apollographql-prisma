@@ -6,7 +6,13 @@ A Prisma backend that uses a local PosgreSQL db to interact with a Prisma server
 
 You'll need `yarn`, `docker-compose` and `prisma` globally installed to run the backend.
 
-1. Start the Prisma server & postgres db
+1. Copy the `.env-sample` environment variables file as `.env`, and change variables. (First time only)
+
+  ```bash
+  cp .env-sample .env
+  ```
+
+2. Start the Prisma server & postgres db
 
   ```bash
   docker-compose up
@@ -18,7 +24,13 @@ You'll need `yarn`, `docker-compose` and `prisma` globally installed to run the 
   docker-compose up -d
   ```
 
-2. Once the Docker containers have finished booting, start the node server
+3. Deploy to Prisma. (First time only, and when the Prisma schema changes)
+
+  ```bash
+  prisma deploy
+  ```
+
+4. **Once the Docker containers have finished booting**, and Prisma has deployed, start the node server
 
   ```bash
   yarn start
