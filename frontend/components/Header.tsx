@@ -17,11 +17,6 @@ const Header = () => {
             <p>About</p>
           </a>
         </Link>
-        <Link href="https://github.com/xaun/react-apollographql-prisma">
-          <a>
-            <p>Github</p>
-          </a>
-        </Link>
       </div>
     )
   } else {
