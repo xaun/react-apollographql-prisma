@@ -1,9 +1,7 @@
-import App from '../components/App'
-import Header from '../components/Header'
+import Page from '../components/Page'
 
 export default () => (
-  <App>
-    <Header />
+  <Page title="About">
     <article>
       <h1>The Idea Behind This Example</h1>
       <p>
@@ -39,5 +37,5 @@ export default () => (
         its GraphQL backend.
       </p>
     </article>
-  </App>
+  </Page>
 )

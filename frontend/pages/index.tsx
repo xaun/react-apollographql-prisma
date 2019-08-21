@@ -1,10 +1,8 @@
-import App from '../components/App'
-import Header from '../components/Header'
+import Page from '../components/Page'
 import { Box } from '../components/atoms/Box'
 
 export default () => (
-  <App>
-    <Header />
+  <Page title="Home">
     <Box
       color="primary" // Derived from theme.tsx
       width={[
@@ -15,5 +13,5 @@ export default () => (
     >
       React App
     </Box>
-  </App>
+  </Page>
 )

@@ -3,7 +3,7 @@ import * as React from 'react'
 import withApolloClient, { IApolloProps } from '../lib/with-apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'styled-components'
-import theme from '../components/tokens/theme'
+import theme from '../lib/theme'
 
 class MyApp extends React.Component<IApolloProps & AppProps> {
   render() {
