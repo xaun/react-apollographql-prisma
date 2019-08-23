@@ -5,7 +5,6 @@ export const Feed = () => {
   const { loading, error, data } = useQuery(gql`
     {
       feed {
-        id
         title
       }
     }
@@ -14,8 +13,8 @@ export const Feed = () => {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
 
-  return data.feed.map(({ id, title }) => (
-    <div key={id}>
+  return data.feed.map((title, index) => (
+    <div key={index}>
       <p>{title}</p>
     </div>
   ))
